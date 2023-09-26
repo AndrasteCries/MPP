@@ -11,20 +11,20 @@ class CharacterCreator
 end
 
 class WarriorCreator < CharacterCreator
-  def create_character
-    Warrior.new
+  def create_character(name)
+    Warrior.new(name)
   end
 end
 
 class MageCreator < CharacterCreator
-  def create_character
-    Mage.new
+  def create_character(name)
+    Mage.new(name)
   end
 end
 
 class RogueCreator < CharacterCreator
-  def create_character
-    Rogue.new
+  def create_character(name)
+    Rogue.new(name)
   end
 end
 
@@ -38,36 +38,39 @@ class CharacterSpec
     raise NotImplementedError, "not implemented method"
   end
 end
-puts "Enter class (Warrior, Mage, Rogue):"
-player_spec = gets.chomp
 
 class Warrior < CharacterSpec
   def attack
-    puts "Hit sword"
+    puts "#{@name} - Hit sword"
   end
 end
 
 class Mage < CharacterSpec
   def attack
-    puts "Hit fireball"
+    puts "#{@name} - Hit fireball"
   end
 end
 
 class Rogue < CharacterSpec
   def attack
-    puts "Hit knife"
+    puts "#{@name} - Hit knife"
   end
 end
 
+puts "Enter class (Warrior, Mage, Rogue):"
+player_spec = gets.chomp
+puts "Enter character name:"
+player_name = gets.chomp
+
 case player_spec
 when "Warrior"
-  warrior = WarriorCreator.new.create_character
+  warrior = WarriorCreator.new.create_character(player_name)
   warrior.attack
 when "Mage"
-  mage = MageCreator.new.create_character
+  mage = MageCreator.new.create_character(player_name)
   mage.attack
 when "Rogue"
-  rogue = RogueCreator.new.create_character
+  rogue = RogueCreator.new.create_character(player_name)
   rogue.attack
 else
   puts "Invalid value"
