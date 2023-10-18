@@ -2,7 +2,7 @@ def ip_address?(str)
     parts = str.split(".")
     return unless parts.length == 4 # до першого false перевіряємо якщо зловили його то повертаемо 
   
-    parts.all? { |part| part.match?(/^\d{1,3}$/) part.to_i >= 0 && part.to_i <= 255 && part.to_i.to_s == part } #(/^\d{1,3}$/) - 1-3 елементи в String, перевіряємо рейнж та перевіряємо чи є початковий парт нашим перетвореним
+    parts.all? { |part| part.match?(/^\d{1,3}$/) && part.to_i >= 0 && part.to_i <= 255 && part.to_i.to_s == part } #(/^\d{1,3}$/) - 1-3 елементи в String, перевіряємо рейнж та перевіряємо чи є початковий парт нашим перетвореним
 
   end
   
